@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Forklift/Super
+  - Forklift/Body
   layers:
   - Default
   - TransparentFX
