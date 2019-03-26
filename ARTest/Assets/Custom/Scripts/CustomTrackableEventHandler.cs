@@ -2,21 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CustomTrackableEventHandler : DefaultTrackableEventHandler
-{
+public class CustomTrackableEventHandler : DefaultTrackableEventHandler {
+    public static CustomTrackableEventHandler instance;
 
-    protected override void OnTrackingFound(){
-        base.OnTrackingFound();
-        
+    private void Awake() {
+        instance = this;
     }
-    protected override void OnTrackingLost(){
+
+    protected override void OnTrackingFound() {
+        base.OnTrackingFound();
+
+        Debug.LogError("<color=green>Tracking found!</color>");
+
+        // var rigidbodies = GetComponentsInChildren<Rigidbody>(true);
+        // foreach (var rb in rigidbodies) {
+        //     rb.isKinematic = false;
+        // }
+    }
+
+    protected override void OnTrackingLost() {
         base.OnTrackingLost();
-        
-        foreach (Transform t in transform) {
-            if (t.gameObject.tag == "Forklift/Body")
-            {
-                t.gameObject.AddComponent<Forklift>();
-            }
-        }
+
+        Debug.LogError("<color=red>Tracking lost!</color>");
+
+        // var rigidbodies = GetComponentsInChildren<Rigidbody>(true);
+        // foreach (var rb in rigidbodies) {
+        //     rb.isKinematic = true;
+        // }
     }
 }

@@ -4,8 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Forklift/Super
-  - Forklift/Body
+  - Interactive
   layers:
   - Default
   - TransparentFX
@@ -16,8 +15,8 @@ TagManager:
   - 
   - 
   - PostProcessing
-  - 
-  - 
+  - Overlay
+  - Terrain
   - 
   - 
   - 
