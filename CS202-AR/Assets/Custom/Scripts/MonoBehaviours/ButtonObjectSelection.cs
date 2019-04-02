@@ -19,6 +19,7 @@ public class ButtonObjectSelection : MonoBehaviour, IPointerDownHandler, IPointe
     }
 
     public Interactable interactableToSpawn;
+    public bool canReset;
     public int maxCopy = 1;
 
     private int numCopy;
@@ -103,7 +104,6 @@ public class ButtonObjectSelection : MonoBehaviour, IPointerDownHandler, IPointe
 
         interactableToSpawn.transform.position = Camera.main.ScreenToWorldPoint(pos);
         interactableToSpawn.transform.rotation = Camera.main.transform.rotation;
-
     }
 
     private void MoveAlongTerrain()
