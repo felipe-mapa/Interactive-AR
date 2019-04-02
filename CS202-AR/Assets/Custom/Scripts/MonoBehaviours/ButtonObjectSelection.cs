@@ -6,17 +6,6 @@ using System.Collections.Generic;
 
 public class ButtonObjectSelection : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    public class MaterialSet
-    {
-        public MaterialSet(Material _material)
-        {
-            material = _material;
-            color = material.GetColor("_Color");
-        }
-
-        public Material material;
-        public Color color;
-    }
 
     public Interactable interactableToSpawn;
     public bool canReset;
@@ -58,6 +47,7 @@ public class ButtonObjectSelection : MonoBehaviour, IPointerDownHandler, IPointe
         if (numCopy < maxCopy)
         {
             FlagObjectForPlacement();
+
             if (numCopy == (maxCopy - 1))
             {
                 DisableButton();
@@ -156,6 +146,19 @@ public class ButtonObjectSelection : MonoBehaviour, IPointerDownHandler, IPointe
         button.interactable = false;
         button.enabled = false;
         GetComponent<Image>().color = new Color(0.7843137f, 0.7843137f, 0.7843137f, 0.5f);
+    }
+
+    //MATERIALS
+    public class MaterialSet
+    {
+        public MaterialSet(Material _material)
+        {
+            material = _material;
+            color = material.GetColor("_Color");
+        }
+
+        public Material material;
+        public Color color;
     }
 
     // Create a separate list of materials we can mess with when toggling between green/red for free or overlapped geometry.
