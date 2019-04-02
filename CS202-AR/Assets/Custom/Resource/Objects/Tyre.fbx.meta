@@ -153,6 +153,7 @@ ModelImporter:
     100294: LOD_Tyre1_High_High_Wheel_Tread_2_pCube244
     100296: polySurface6
     100298: pPipe6
+    100300: LOD_Tyre_High_High_Wheel_Tyre
     400000: High
     400002: High 1
     400004: Low
@@ -303,6 +304,7 @@ ModelImporter:
     400294: LOD_Tyre1_High_High_Wheel_Tread_2_pCube244
     400296: polySurface6
     400298: pPipe6
+    400300: LOD_Tyre_High_High_Wheel_Tyre
     2100000: shadingMap2
     2100002: lambert1
     2100004: blinn1
@@ -443,6 +445,7 @@ ModelImporter:
     2300266: LOD_Tyre1_High_High_Wheel_Tread_2_pCube244
     2300268: polySurface6
     2300270: pPipe6
+    2300272: LOD_Tyre_High_High_Wheel_Tyre
     3300000: pCube125
     3300002: pCube126
     3300004: pCube127
@@ -579,6 +582,7 @@ ModelImporter:
     3300266: LOD_Tyre1_High_High_Wheel_Tread_2_pCube244
     3300268: polySurface6
     3300270: pPipe6
+    3300272: LOD_Tyre_High_High_Wheel_Tyre
     4300000: pPipe3
     4300002: pCylinder2
     4300004: pCylinder1
@@ -715,6 +719,7 @@ ModelImporter:
     4300266: polySurface6
     4300268: LOD_Tyre1_High_High_Wheel_Tread_2_pCube244
     4300270: pPipe6
+    4300272: LOD_Tyre_High_High_Wheel_Tyre
   externalObjects: {}
   materials:
     importMaterials: 1

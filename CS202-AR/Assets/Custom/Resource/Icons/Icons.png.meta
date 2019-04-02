@@ -1,10 +1,11 @@
 fileFormatVersion: 2
-guid: 4feb39d75a2e1ca4b920367f611300aa
+guid: 6886c1d784a2a88499d5b02a398ea7be
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Trident
-    21300002: Forklift
-    21300004: Wheel
+    21300000: Icons_forklift
+    21300002: Icons_Trident
+    21300004: Icons_Forklift
+    21300006: Icons_Wheel
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -34,7 +35,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 0
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -44,12 +45,12 @@ TextureImporter:
   lightmap: 0
   compressionQuality: 50
   spriteMode: 2
-  spriteExtrude: 1
+  spriteExtrude: 3
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteBorder: {x: 0, y: 0, z: 235, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -142,7 +143,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Trident
+      name: Icons_Trident
       rect:
         serializedVersion: 2
         x: 0
@@ -156,13 +157,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ffb2925498886f34bbd87243c22cde89
+      spriteID: e4f23be6f7233a048a2050903b739872
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Forklift
+      name: Icons_Forklift
       rect:
         serializedVersion: 2
         x: 256
@@ -176,13 +177,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e992c6f24363a6c40a496d096d941861
+      spriteID: 097bd6882e373d64186f39c2e33ed88e
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Wheel
+      name: Icons_Wheel
       rect:
         serializedVersion: 2
         x: 512
@@ -196,7 +197,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a2d5936777b8c4d47ae640b5f554d6f7
+      spriteID: e4eff0e10a2ba414bb87be4ab18f0e87
       vertices: []
       indices: 
       edges: []
@@ -204,7 +205,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 87f164f5b943e2e4aa74f1c65136c0b2
+    spriteID: 43454d02cedfc544f959e18df26d5007
     vertices: []
     indices: 
     edges: []
