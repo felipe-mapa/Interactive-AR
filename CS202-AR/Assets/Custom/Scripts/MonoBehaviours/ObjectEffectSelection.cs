@@ -5,9 +5,10 @@ using System;
 
 public class ObjectEffectSelection : Interactable
 {
+    public Animator anim;
+    
     private ParticleSystem particle;
     private AudioSource audioS;
-    private Animator anim;
 
     private Coroutine corRespond;
 
@@ -15,7 +16,6 @@ public class ObjectEffectSelection : Interactable
     {
         audioS = GetComponent<AudioSource>();
         particle = transform.GetComponentInChildren<ParticleSystem>();
-        anim = GetComponent<Animator>();
 
         StartCoroutine(WaitingCoroutine());
     }
@@ -53,6 +53,7 @@ public class ObjectEffectSelection : Interactable
 
     // Start Animation
     private void RunAnimation() {
-        anim.Play(0);
+        // anim.Play(0);
+        anim.SetTrigger("Activate");
     }
 }

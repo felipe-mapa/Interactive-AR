@@ -8,24 +8,22 @@ public class ButtonObjectSelection : MonoBehaviour, IPointerDownHandler, IPointe
 {
 
     public Interactable interactableToSpawn;
-    public bool canReset;
     public int maxCopy = 1;
+    public List<MaterialSet> previewMaterialSets = new List<MaterialSet>();
 
     private int numCopy;
     private LayerMask mask;
-    private Vector3 initialPosition;
     private Vector3 spawnPosition;
     private Quaternion spawnRotation;
     private RaycastHit hit;
     private Button button;
     private bool isDragging;
-    private List<MaterialSet> previewMaterialSets = new List<MaterialSet>();
 
     private void Awake()
     {
         button = GetComponent<Button>();
         mask = LayerMask.GetMask("Terrain");
-        initialPosition = interactableToSpawn.transform.position;
+        interactableToSpawn.gameObject.SetActive(false);
 
         PopulatePreviewMaterials();
     }
@@ -72,6 +70,7 @@ public class ButtonObjectSelection : MonoBehaviour, IPointerDownHandler, IPointe
         isDragging = true;
 
         SetObjectLayer(interactableToSpawn.transform, "Overlay");
+        interactableToSpawn.gameObject.SetActive(true);
 
         MoveAlongOverlay();
     }
@@ -138,7 +137,7 @@ public class ButtonObjectSelection : MonoBehaviour, IPointerDownHandler, IPointe
         hit = new RaycastHit();
 
         SetObjectLayer(interactableToSpawn.transform, "Overlay");
-        interactableToSpawn.transform.position = initialPosition;
+        interactableToSpawn.gameObject.SetActive(false);
     }
 
     private void DisableButton()
@@ -149,55 +148,58 @@ public class ButtonObjectSelection : MonoBehaviour, IPointerDownHandler, IPointe
     }
 
     //MATERIALS
+    [Serializable]
     public class MaterialSet
     {
         public MaterialSet(Material _material)
         {
+            name = _material.name;
             material = _material;
-            color = material.GetColor("_Color");
+            color = material.color;
+
+            if (!material.HasProperty("_Color")) {
+                Debug.LogWarning(material.name);
+            }
         }
 
+        public string name;
         public Material material;
         public Color color;
     }
 
     // Create a separate list of materials we can mess with when toggling between green/red for free or overlapped geometry.
-    private void PopulatePreviewMaterials()
-    {
-        Renderer[] renderers = interactableToSpawn.gameObject.GetComponentsInChildren<Renderer>();
+    private void PopulatePreviewMaterials() {
+        Renderer[] renderers = interactableToSpawn.gameObject.GetComponentsInChildren<MeshRenderer>();
 
-        foreach (Renderer r in renderers)
-        {
-            foreach (Material m in r.materials)
-            {
+        foreach (Renderer r in renderers) {
+            foreach (Material m in r.materials) {
                 previewMaterialSets.Add(new MaterialSet(m));
             }
         }
     }
 
     // Colour our materials red or green if our dragged object is above terrain, otherwise colour it white.
-    private void UpdatePreviewMaterial()
-    {
+    private void UpdatePreviewMaterial() {
         if (previewMaterialSets == null || previewMaterialSets.Count <= 0) { return; }
 
-        if (hit.transform)
-        {
+        if (hit.transform) {
             // Colour our objects red if the preview position overlaps with another object, otherwise green.
             RecolourMaterialsInHierarchy((DetectOverlap.overlaps.Count > 0) ? Color.red : Color.green);
-        }
-        else
-        {
+        } else {
             RecolourMaterialsInHierarchy(Color.white);
         }
     }
 
     // Just a method to summarize what happens when recolouring our materials.
-    private void RecolourMaterialsInHierarchy(Color _colour)
-    {
-        Renderer[] renderers = interactableToSpawn.GetComponentsInChildren<Renderer>();
-        for (int i = 0; i < renderers.Length; i++)
-        {
-            renderers[i].material.SetColor("_Color", _colour == Color.white ? previewMaterialSets[i].color : _colour);
+    private void RecolourMaterialsInHierarchy(Color _colour) {
+        Renderer[] renderers = interactableToSpawn.GetComponentsInChildren<MeshRenderer>();
+        for (int i = 0; i < renderers.Length; i++) {
+            renderers[i].material.color = _colour == Color.white ? previewMaterialSets[i].color : _colour;
+
+            if (!renderers[i].material.HasProperty("_Color"))
+            {
+                Debug.LogWarning(renderers[i].material.name);
+            }
         }
     }
 }
