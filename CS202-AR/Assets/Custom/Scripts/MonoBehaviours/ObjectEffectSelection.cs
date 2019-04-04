@@ -28,9 +28,11 @@ public class ObjectEffectSelection : Interactable
 
     protected override void Respond()
     {
-        RunVisualEffect();
-        RunSoundEffect();
-        RunAnimation();
+        if (!audioS.isPlaying && particle.isStopped && particle.isStopped){
+            RunVisualEffect();
+            RunSoundEffect();
+            RunAnimation();
+        }
     }
 
     private IEnumerator WaitingCoroutine() {
@@ -38,17 +40,12 @@ public class ObjectEffectSelection : Interactable
     }
         
     private void RunSoundEffect() {
-        if(!audioS.isPlaying){ 
-            audioS.Play();
-        }
+        audioS.Play();
     }
 
     // Start Visual Effect
     private void RunVisualEffect() {
-
-        if(particle.isStopped){ 
-            particle.Play();
-        }
+        particle.Play();
     }
 
     // Start Animation
